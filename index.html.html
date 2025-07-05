@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From ARPANET to Everywhere: The Story of the Internet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 40vh;
+        }
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .stat-card {
+            background-color: #004AAD;
+            color: #FFFFFF;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 18px;
+            height: 100%;
+            width: 4px;
+            background: #B3DAFF;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 4rem;
+            margin-bottom: 2rem;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-dot {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            height: 40px;
+            width: 40px;
+            background: #0079FF;
+            border: 4px solid #B3DAFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        .flowchart-node {
+            border: 2px solid #0079FF;
+            background-color: #B3DAFF;
+            color: #004AAD;
+        }
+        .flowchart-line {
+            border-top: 2px dashed #0079FF;
+        }
+        .gemini-card {
+            background-color: #004AAD;
+            color: #FFFFFF;
+        }
+        #gemini-spinner {
+            border-top-color: #0079FF;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-[#B3DAFF] text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center my-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#004AAD]">From ARPANET to Everywhere</h1>
+            <p class="text-xl md:text-2xl font-semibold text-[#0079FF] mt-4">The Incredible Story of How the Internet Changed the World</p>
+        </header>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            <div class="stat-card lg:col-span-1 md:col-span-2">
+                <div class="stat-number">5.4B</div>
+                <div class="stat-label">Global Internet Users</div>
+                <p class="mt-4 text-sm text-blue-200">As of early 2024, representing over 67% of the world's population. This massive digital nation was built from a single message sent less than 60 years ago.</p>
+            </div>
+            
+            <div class="lg:col-span-2 md:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-[#004AAD] mb-4">1969: The First Connection</h2>
+                <p class="mb-6 text-slate-600">The internet began as ARPANET, a military project. On October 29, 1969, a message was sent from a computer at UCLA to another at Stanford Research Institute. The intended message was "LOGIN," but the system crashed after "LO." This humble beginning marked the first host-to-host connection of what would become the internet. Below are the first four nodes on this pioneering network.</p>
+                 <div class="w-full flex flex-col items-center">
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
+                        <div class="flowchart-node font-bold p-4 rounded-lg shadow-md">UCLA</div>
+                        <div class="w-px md:w-12 h-8 md:h-px flowchart-line"></div>
+                        <div class="flowchart-node font-bold p-4 rounded-lg shadow-md">Stanford (SRI)</div>
+                    </div>
+                    <div class="w-px h-8 flowchart-line"></div>
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8">
+                        <div class="flowchart-node font-bold p-4 rounded-lg shadow-md">UC Santa Barbara</div>
+                        <div class="w-px md:w-12 h-8 md:h-px flowchart-line"></div>
+                        <div class="flowchart-node font-bold p-4 rounded-lg shadow-md">University of Utah</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12 bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-[#004AAD] mb-4 text-center">Building the Foundation (1970s - 1980s)</h2>
+            <p class="mb-8 text-slate-600 max-w-3xl mx-auto text-center">The decades after the first connection were about building the fundamental protocols that would allow diverse networks to communicate. This period saw the invention of the internet's common language and the groundwork for its civilian use.</p>
+            <div class="timeline max-w-3xl mx-auto">
+                <div class="timeline-item">
+                    <div class="timeline-dot">73</div>
+                    <h3 class="text-xl font-bold text-[#0079FF]">TCP/IP Invented</h3>
+                    <p class="text-slate-600">Vint Cerf and Robert Kahn design TCP/IP, the core communication protocols that create a true 'network of networks' by standardizing how data is sent and received.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">83</div>
+                    <h3 class="text-xl font-bold text-[#0079FF]">Domain Name System (DNS)</h3>
+                    <p class="text-slate-600">The familiar .com, .org, and .edu system is introduced, replacing complex numerical addresses with human-readable names, making the network far more accessible.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">85</div>
+                    <h3 class="text-xl font-bold text-[#0079FF]">NSFNET is Born</h3>
+                    <p class="text-slate-600">The National Science Foundation creates a high-speed 'backbone' network, connecting universities and research centers, effectively becoming the internet's new infrastructure and opening it to wider academic use.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid grid-cols-1 md:grid-cols-5 gap-8 mt-12">
+            <div class="md:col-span-2 bg-white rounded-lg shadow-lg p-6 flex flex-col justify-center">
+                <h2 class="text-2xl font-bold text-[#004AAD] mb-4">1991: The Web is Woven</h2>
+                <p class="text-slate-600">Working at CERN, British scientist Tim Berners-Lee invents the World Wide Web. He develops HTML, HTTP, and the first web browser, combining them into a system for easily sharing and accessing information. This wasn't a new internet, but a revolutionary way to use it, turning it from a data-transfer tool into a universe of interconnected pages.</p>
+            </div>
+            <div class="md:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-[#004AAD] mb-2">The Explosive Growth of Websites</h3>
+                <p class="text-sm text-slate-500 mb-4">After the web's invention, the number of websites grew from a single site in 1991 to millions by the end of the decade, signaling the start of the digital gold rush.</p>
+                <div class="chart-container">
+                    <canvas id="websiteGrowthChart"></canvas>
+                </div>
+            </div>
+        </section>
+        
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+             <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-[#004AAD] mb-2">The Dot-Com Boom</h3>
+                <p class="text-sm text-slate-500 mb-4">The late 90s saw a massive speculative bubble as investment poured into internet-based companies. This chart shows the approximate number of internet users in millions for some key players at their peak.</p>
+                <div class="chart-container">
+                    <canvas id="dotComChart"></canvas>
+                </div>
+            </div>
+             <div class="bg-white rounded-lg shadow-lg p-6">
+                <h3 class="text-xl font-bold text-[#004AAD] mb-2">The Shift to Mobile</h3>
+                <p class="text-sm text-slate-500 mb-4">The launch of the iPhone in 2007 heralded the mobile era. Today, mobile devices account for the majority of website traffic, fundamentally changing how we access and interact with the internet.</p>
+                 <div class="chart-container">
+                    <canvas id="deviceUsageChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <h2 class="text-2xl font-bold text-[#004AAD] mb-4 text-center">The Future: An AI-Powered Web</h2>
+            <div class="gemini-card max-w-3xl mx-auto rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-white mb-2">What's Next?</h3>
+                <p class="text-blue-200 mb-4">The internet's story is still being written. Enter a topic below to generate a possible future scenario powered by AI.</p>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input type="text" id="future-topic-input" placeholder="e.g., The Metaverse, Quantum Internet" class="flex-grow p-3 rounded-md text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#0079FF]">
+                    <button id="generate-future-btn" class="bg-[#0079FF] hover:bg-[#52A9FF] text-white font-bold py-3 px-6 rounded-md transition-colors duration-300 flex items-center justify-center">
+                        <span id="gemini-btn-text">✨ Generate Future Scenario</span>
+                        <div id="gemini-spinner" class="hidden w-5 h-5 border-2 border-white rounded-full"></div>
+                    </button>
+                </div>
+                <div id="gemini-result-container" class="mt-6 bg-blue-900/30 p-4 rounded-md min-h-[100px] text-blue-100 hidden">
+                    <p id="gemini-result-text"></p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 pb-8">
+            <p class="text-slate-600 font-semibold text-lg">The Internet is a testament to collaborative innovation.</p>
+            <p class="text-slate-500">From a Cold War project to the backbone of modern society, its evolution continues to shape our world in ways its creators could never have imagined.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function wrapLabel(str, max_width) {
+            if (typeof str !== 'string' || str.length <= max_width) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let current_line = '';
+            words.forEach(word => {
+                if ((current_line + ' ' + word).trim().length > max_width && current_line !== '') {
+                    lines.push(current_line);
+                    current_line = word;
+                } else {
+                    current_line = (current_line + ' ' + word).trim();
+                }
+            });
+            if (current_line !== '') {
+                lines.push(current_line);
+            }
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const chartColors = {
+            blue: '#0079FF',
+            lightBlue: '#52A9FF',
+            paleBlue: '#B3DAFF',
+            darkBlue: '#004AAD',
+        };
+
+        async function callGeminiApi(prompt) {
+            const apiKey = ""; 
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{
+                    role: "user",
+                    parts: [{ text: prompt }]
+                }]
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    return result.candidates[0].content.parts[0].text;
+                } else {
+                    return "Could not generate a scenario. The model returned an empty response.";
+                }
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                return "An error occurred while trying to generate the future scenario. Please check the console for details.";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const websiteGrowthCtx = document.getElementById('websiteGrowthChart').getContext('2d');
+            new Chart(websiteGrowthCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1991', '1993', '1995', '1997', '1999', '2001'],
+                    datasets: [{
+                        label: 'Number of Websites',
+                        data: [1, 130, 23500, 1000000, 17000000, 29000000],
+                        borderColor: chartColors.blue,
+                        backgroundColor: 'rgba(0, 121, 255, 0.1)',
+                        fill: true,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            type: 'logarithmic',
+                            title: { display: true, text: 'Number of Websites (Log Scale)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    }
+                }
+            });
+
+            const dotComCtx = document.getElementById('dotComChart').getContext('2d');
+            const dotComLabels = ['AOL', 'Yahoo!', 'Netscape Navigator', 'GeoCities', wrapLabel('Ask Jeeves (Ask.com)', 16)];
+            new Chart(dotComCtx, {
+                type: 'bar',
+                data: {
+                    labels: dotComLabels,
+                    datasets: [{
+                        label: 'Users at Peak (Millions)',
+                        data: [34, 61, 60, 19, 7],
+                        backgroundColor: [
+                            chartColors.blue,
+                            chartColors.lightBlue,
+                            chartColors.darkBlue,
+                            chartColors.paleBlue,
+                            '#3b82f6'
+                        ],
+                        borderColor: '#ffffff',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    }
+                }
+            });
+            
+            const deviceUsageCtx = document.getElementById('deviceUsageChart').getContext('2d');
+            const deviceLabels = ['Mobile Devices', 'Desktop/Laptop', wrapLabel('Tablet & Other Devices', 16)];
+            new Chart(deviceUsageCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: deviceLabels,
+                    datasets: [{
+                        label: 'Global Web Traffic by Device',
+                        data: [59.8, 38.1, 2.1],
+                        backgroundColor: [
+                            chartColors.darkBlue,
+                            chartColors.lightBlue,
+                            chartColors.paleBlue
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { callbacks: { title: tooltipTitleCallback } }
+                    }
+                }
+            });
+
+            const generateBtn = document.getElementById('generate-future-btn');
+            const topicInput = document.getElementById('future-topic-input');
+            const resultContainer = document.getElementById('gemini-result-container');
+            const resultText = document.getElementById('gemini-result-text');
+            const btnText = document.getElementById('gemini-btn-text');
+            const spinner = document.getElementById('gemini-spinner');
+
+            generateBtn.addEventListener('click', async () => {
+                const topic = topicInput.value.trim();
+                if (!topic) {
+                    resultText.textContent = "Please enter a topic.";
+                    resultContainer.classList.remove('hidden');
+                    return;
+                }
+
+                btnText.classList.add('hidden');
+                spinner.classList.remove('hidden');
+                generateBtn.disabled = true;
+                resultContainer.classList.add('hidden');
+
+                const prompt = `As a tech futurist, describe a plausible, creative scenario for how "${topic}" could fundamentally change the internet and our daily lives in the next 20 years. Be concise and imaginative.`;
+                
+                const scenario = await callGeminiApi(prompt);
+                
+                resultText.textContent = scenario;
+                resultContainer.classList.remove('hidden');
+                btnText.classList.remove('hidden');
+                spinner.classList.add('hidden');
+                generateBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
